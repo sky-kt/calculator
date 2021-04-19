@@ -2,148 +2,38 @@
 <html>
     <header>
         <title>Calculator</title>
-        <style>
-            :root {
-                --calculator-case-color: rgb(44, 44, 44);
-                --horizontal-display-color: #8ab142;
-                --normal-button-color: rgb(116, 116, 116);
-                --enter-button-color: rgb(255, 145, 0);
-                --top-button-color: rgb(80, 80, 80);
-            }
-
-            #central_title {
-                text-align: center;
-                font-family: 'Courier New', Courier, monospace;
-                position: relative;
-                top: 50px;
-            }
-
-            #calculator_container {
-                width: 600px;
-                height: 750px;
-                background-color: var(--calculator-case-color);
-                margin: auto;
-                margin-top: 120px;
-                border-radius: 50px
-            }
-
-            #horizontal_display {
-                position: relative;
-                margin: auto;
-                background-color: var(--horizontal-display-color);
-                width: 540px;
-                height: 130px;
-                top: 40px;
-                border-radius: 24px;
-            }
-
-            #buttons {
-                display: grid;
-                grid-template-columns: repeat(4, 100px);
-                grid-template-rows: repeat(5, 80px);
-                justify-content: stretch;
-                grid-gap: 20px;
-                position: relative; 
-            }
-
-            .center_buttons {
-                width: 460px;
-                height: 460px;
-                margin: auto;
-                top: 80px
-            }
-
-            .normal_button {
-                background-color: var(--normal-button-color);
-                border-radius: 10px;
-            }
-
-            .normal_button:hover {
-                box-shadow: 0px 0px 20px 0px var(--normal-button-color);
-            }
-
-            .top_button {
-                background-color: var(--top-button-color);
-                border-radius: 10px;
-            }
-
-            .top_button:hover {
-                box-shadow: 0px 0px 20px 0px var(--top-button-color);
-            }
-
-            .tall_button {
-                background-color: var(--enter-button-color);
-                grid-row: 4 / 6;
-                grid-column: 4;
-                border-radius: 10px;
-                text-align: center;
-            }
-            
-            .tall_button:hover {
-                box-shadow: 0px 0px 20px 0px var(--enter-button-color);
-            }
-
-            .wide_button {
-                background-color: var(--normal-button-color);
-                grid-row: 5; 
-                grid-column: 1 / 3;
-                border-radius: 10px;
-            }
-
-            .wide_button:hover {
-                box-shadow: 0px 0px 20px 0px var(--normal-button-color);
-            }
-
-            .center {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .button_text {
-                font-family: 'Courier New', Courier, monospace;
-                font-size: 25px; 
-                font-weight: bold;
-                color: white;
-            }
-
-            body {
-                background: linear-gradient(90deg, rgba(244,154,154,1) 0%, rgba(200,90,90,1) 100%);;
-            }
-            
-
-            
-
-
-        </style>
+        <link rel="stylesheet" href="styles.css">
     </header>
     <body>
         <h1 id="central_title">Calculator</h1>
         <div id="calculator_container">
-            <div id="horizontal_display"></div>
-            <div id="buttons" class="center_buttons">
-                <div class="top_button center"><p class="button_text">ON</p></div>
-                <div class="top_button center"><p class="button_text">OFF</p></div>
-                <div class="top_button center"><p class="button_text">&#xF7</p></div>
-                <div class="top_button center"><p class="button_text">&#215</p></div>
-                <div class="normal_button center"><p class="button_text">7</p></div>
-                <div class="normal_button center"><p class="button_text">8</p></div>
-                <div class="normal_button center"><p class="button_text">9</p></div>
-                <div class="normal_button center"><p class="button_text">&#8722</p></div>
-                <div class="normal_button center"><p class="button_text">4</p></div>
-                <div class="normal_button center"><p class="button_text">5</p></div>
-                <div class="normal_button center"><p class="button_text">6</p></div>
-                <div class="normal_button center"><p class="button_text">&#43</p></div>
-                <div class="normal_button center"><p class="button_text">1</p></div>
-                <div class="normal_button center"><p class="button_text">2</p></div>
-                <div class="tall_button center"><p class="button_text">3</p></div>
-                <div class="wide_button center"><p class="button_text">&#61</p></div>
-                <div class="normal_button center"><p class="button_text">0</p></div>
-                <div class="normal_button center"><p class="button_text">.</p></div>
+            <div id="horizontal_display">
+                <div class="display_flex">
+                    <p id="display_text"></p>
+                </div>
             </div>
-            
+            <div id="buttons" class="center_buttons">
+                <div class="top_button center" id="clear"><p class="small_text">CLR</p></div>
+                <div class="top_button center" id="delete"><p class="small_text">DEL</p></div>
+                <div class="top_button center" id="divide"><p class="button_text">&#xF7</p></div>
+                <div class="top_button center" id="multiply"><p class="button_text">&#215</p></div>
+                <div class="normal_button center" id="7"><p class="button_text">7</p></div>
+                <div class="normal_button center" id="8"><p class="button_text">8</p></div>
+                <div class="normal_button center" id="9"><p class="button_text">9</p></div>
+                <div class="normal_button center" id="subtract"><p class="button_text">&#8722</p></div>
+                <div class="normal_button center" id="4"><p class="button_text">4</p></div>
+                <div class="normal_button center" id="5"><p class="button_text">5</p></div>
+                <div class="normal_button center" id="6"><p class="button_text">6</p></div>
+                <div class="normal_button center" id="add"><p class="button_text">&#43</p></div>
+                <div class="normal_button center" id="1"><p class="button_text">1</p></div>
+                <div class="normal_button center" id="2"><p class="button_text">2</p></div>
+                <div class="tall_button center" id="equal"><p class="button_text">&#61</p></div>
+                <div class="wide_button center" id="0"><p class="button_text">0</p></div>
+                <div class="normal_button center" id="3"><p class="button_text">3</p></div>
+                <div class="normal_button center" id="decimal"><p class="button_text">.</p></div>
+            </div>
     </body>
     <footer>
-
+        <script src="code.js"></script>
     </footer>
 </html>
