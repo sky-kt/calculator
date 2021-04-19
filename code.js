@@ -1,6 +1,7 @@
 let text = "";
 let received_operator = 0;
 
+const root = document.querySelector(':root');
 const display_text = document.getElementById('display_text');
 
 const power_button = document.getElementById('power');
@@ -46,14 +47,18 @@ function operate(num1, num2, operator) {
 function update_text(input_text) {
     if (input_text === " + " || input_text === " − "
     || input_text === " × " || input_text === " ÷ ") {
+        if (received_operator >= 1) {
+            console.log("skipping");
+            return;
+        }
         ++received_operator;
     }
-
-    if (received_operator >= 2) console.log("skipping");
-    else {
-        text += input_text;
-        display_text.textContent = text;
+    if (text.length > 15) {
+        console.log("skipping");
+        return;
     }
+    text += input_text;
+    display_text.textContent = text;
 }
 
 function separate_text() {
@@ -68,14 +73,16 @@ function separate_text() {
 
 function reset(return_value) {
     received_operator = 0;
+    return_value = Math.round(return_value * 100) / 100;
     text = return_value.toString();
     display_text.textContent = return_value;
-    
 }
 
 
 
-power_button.addEventListener('click', () => console.log("power")); 
+power_button.addEventListener('click', () => {
+    //useless!!!!!!!!!!!!!!!
+}); 
 
 clear_button.addEventListener('click', () => {
     location.reload(); 
