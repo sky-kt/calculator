@@ -4,7 +4,7 @@ let received_operator = 0;
 const root = document.querySelector(':root');
 const display_text = document.getElementById('display_text');
 
-const power_button = document.getElementById('power');
+const delete_button = document.getElementById('delete');
 const clear_button = document.getElementById('clear');
 
 const add_button = document.getElementById('add');
@@ -53,7 +53,7 @@ function update_text(input_text) {
         }
         ++received_operator;
     }
-    if (text.length > 15) {
+    else if (text.length > 15) {
         console.log("skipping");
         return;
     }
@@ -78,10 +78,10 @@ function reset(return_value) {
     display_text.textContent = return_value;
 }
 
-
-
-power_button.addEventListener('click', () => {
-    //useless!!!!!!!!!!!!!!!
+delete_button.addEventListener('click', () => {
+    let text_length = text.length;
+    text = text.slice(0, text_length - 1);
+    display_text.textContent = text;
 }); 
 
 clear_button.addEventListener('click', () => {
