@@ -39,6 +39,9 @@ function operate(num1, num2, operator) {
         return num1 * num2;
     }
     else if (operator === "÷") {
+        if (num2 === 0) {
+            return "Nice try.";
+        }
         return num1 / num2;
     }
     else console.log("Invalid operator...");
@@ -67,15 +70,19 @@ function separate_text() {
     let operator = separated_text[1];
     let b = Number(separated_text[2]);
 
-    let return_value = operate(a, b, operator).toString();
+    let return_value = operate(a, b, operator);
     reset(return_value);
 }
 
 function reset(return_value) {
     received_operator = 0;
-    return_value = Math.round(return_value * 100) / 100;
+    console.log(typeof return_value);
+    if (typeof return_value === 'number') {
+        return_value = Math.round(return_value * 100) / 100;
+        console.log(return_value);
+    }
     text = return_value.toString();
-    display_text.textContent = return_value;
+    display_text.textContent = text;
 }
 
 delete_button.addEventListener('click', () => {
